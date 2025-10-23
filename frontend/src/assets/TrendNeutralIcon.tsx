@@ -1,6 +1,7 @@
 export const TrendNeutralIcon = () => (
   <svg
     className="w-4 h-4 text-gray-400"
+    data-testid="trend-neutral"
     fill="currentColor"
     viewBox="0 0 20 20"
   >

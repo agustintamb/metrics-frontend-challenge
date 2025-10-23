@@ -1,6 +1,7 @@
 export const TrendArrowIcon = ({ isUp }: { isUp: boolean }) => (
   <svg
     className={`w-4 h-4 ${isUp ? "text-green-500" : "text-red-500"}`}
+    data-testid="trend-arrow"
     fill="currentColor"
     viewBox="0 0 20 20"
   >
