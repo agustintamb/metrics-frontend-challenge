@@ -1,3 +1,5 @@
+import { formatCurrency, formatNumber } from "@/utils";
+
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const METRICS_COUNT = Number(import.meta.env.VITE_METRICS_COUNT) || 20;
 export const POLLING_INTERVAL_MS =
@@ -52,4 +54,29 @@ export const FILTER_OPTIONS = {
     { value: "LATAM", label: "Latinoamérica" },
     { value: "APAC", label: "Asia-Pacífico" },
   ],
+} as const;
+
+// Determine which metric to display based on the selected filter
+export const metricConfigs = {
+  activeUsers: {
+    key: "activeUsers",
+    label: METRICS_LABELS.activeUsers,
+    color: "#6366f1",
+    gradientColors: ["#6366f1", "#8b5cf6"],
+    formatter: formatNumber,
+  },
+  revenue: {
+    key: "revenue",
+    label: METRICS_LABELS.revenue,
+    color: "#059669",
+    gradientColors: ["#059669", "#10b981"],
+    formatter: formatCurrency,
+  },
+  churnRate: {
+    key: "churnRate",
+    label: METRICS_LABELS.churnRate,
+    color: "#dc2626",
+    gradientColors: ["#dc2626", "#ef4444"],
+    formatter: (value: number) => `${value.toFixed(2)}%`,
+  },
 } as const;

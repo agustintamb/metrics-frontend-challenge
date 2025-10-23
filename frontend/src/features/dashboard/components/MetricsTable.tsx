@@ -9,7 +9,12 @@ import {
   formatPercentage,
 } from "@/utils";
 
-export const MetricsTable = () => {
+interface MetricsTableProps {
+  isLoading?: boolean;
+  error?: Error | null;
+}
+
+export const MetricsTable = ({ isLoading, error }: MetricsTableProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(200);
 
@@ -95,12 +100,10 @@ export const MetricsTable = () => {
       pageSize={pageSize}
       onPageChange={setCurrentPage}
       onPageSizeChange={handleSizeChange}
+      loadingRowsCount={4}
       showPagination
-      emptyState={
-        <div className="p-8 text-center">
-          <p className="text-gray-600">No hay métricas para mostrar</p>
-        </div>
-      }
+      isLoading={isLoading}
+      error={error}
     />
   );
 };

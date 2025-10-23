@@ -1,3 +1,5 @@
+import { metricConfigs } from "@/constants";
+
 /** Formats currency in ARS  */
 export const formatCurrency = (amount: number): string =>
   new Intl.NumberFormat("es-AR", {
@@ -43,6 +45,15 @@ export const calculateTrend = (
   if (current > previous) return "up";
   if (current < previous) return "down";
   return "neutral";
+};
+
+export const tickFormatter = (
+  value: number,
+  metricConfig: (typeof metricConfigs)[keyof typeof metricConfigs]
+) => {
+  if (metricConfig.key === "revenue") return `${formatNumber(value / 1000)}K`;
+  if (metricConfig.key === "churnRate") return `${value.toFixed(1)}%`;
+  return formatNumber(value);
 };
 
 /** Debounce function */
