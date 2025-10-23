@@ -18,6 +18,7 @@ export const DashboardHeader = ({
         Dashboard de métricas
       </h1>
       <div
+        data-testid="live-indicator"
         className={`w-3 h-3 mt-3 rounded-full ${
           isLoading
             ? "bg-gray-400"
